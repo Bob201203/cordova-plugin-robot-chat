@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<resources>
+	<string name="app_name">Fingo_</string>
+	<string name="launcher_name">@string/app_name</string>
+	<string name="activity_name">@string/launcher_name</string>
+	<string name="title_activity_setting">设置</string>
+	<string name="title_activity_hist">历史记录</string>
+	<string name="title_activity_scan">扫描二维码</string>
+    <string name="pd_back">返回</string>
+    <string name="pd_send">发送</string>
+    <string name="pd_more">更多</string>
+    <string name="pd_photo">照片</string>
+    <string name="pd_camera">拍摄</string>
+    <string name="pd_file">文件</string>
+    
+    <string name="pd_connecting">正在连接...</string>
+    <string name="pd_connection_failed">连接失败</string>
+    <string name="pd_connection_closed">连接已断开</string>
+    
+    <string name="pd_yesterday">昨天</string>
+    
+    <string name="pd_hold_to_talk">按住 说话</string>
+    <string name="pd_release_to_send">松开 结束</string>
+    <string name="pd_release_to_cancel">松开 取消</string>
+    <string name="pd_slideup_and_cancel">手指上滑，取消发送</string>
+    <string name="pd_release_and_cancel">松开手指，取消发送</string>
+    
+    <string name="pd_unsupported_message">当前版本不支持该消息</string>
+    
+    <string name="pd_message_menu">菜单</string>
+    <string name="pd_message_recommend">您是不是想问下面的问题</string>
+</resources>

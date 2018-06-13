@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-robot-chat" version="1.0.0" 
+    xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>RobotChat</name>
+    <preference name="APP_KEY" />
+    <js-module name="RobotChat" src="www/RobotChat.js">
+        <clobbers target="cordova.plugins.RobotChat" />
+    </js-module>
+    <platform name="android">
+        <!--framework src="com.android.support:support-v4:24.1.1+"/-->
+        <framework src="src/android/RobotChat.gradle" custom="true" type="gradleReference" />
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="RobotChat">
+                <param name="android-package" value="com.fingo.fenguo.robot.CordovaRobotPlugin" />
+            </feature>
+        </config-file>
+
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.RECORD_AUDIO" />
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application" mode="merge">
+            <activity android:name="com.fingo.fenguo.robot.DemoChatActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="adjustResize" android:launchMode="singleTask" android:theme="@style/AppTheme"/>
+            <activity android:name="com.fingo.fenguo.robot.SettingActivity" android:label="@string/title_activity_setting" android:theme="@style/AppTheme" />
+            <activity android:name="com.fingo.fenguo.robot.HistoryActivity" android:label="@string/title_activity_hist" android:theme="@style/AppTheme"/>
+            <activity android:name="com.fingo.fenguo.robot.ScanActivity" android:label="@string/title_activity_scan" android:windowSoftInputMode="stateAlwaysHidden" android:theme="@style/AppTheme"/>
+
+            <meta-data android:name="ROBOT_SERVICE_APPKEY" android:value="$APP_KEY" />
+        </config-file>
+
+        <source-file src="src/android/com/czt/mp3recorder" target-dir="app/src/main/java/com/czt" />
+        <source-file src="src/android/com/fingo/fenguo/robot" target-dir="app/src/main/java/com/fingo/fenguo" />
+        <source-file src="src/android/pl/droidsonroids/gif" target-dir="app/src/main/java/pl/droidsonroids" />
+        <!--source-file src="src/android/CordovaRobotPlugin.java" target-dir="src/com/fingo/fenguo/robot" />
+        <source-file src="src/android/DemoChatActivity.java" target-dir="src/com/fingo/fenguo/robot" />
+        <source-file src="src/android/HistoryActivity.java" target-dir="src/com/fingo/fenguo/robot" />
+        <source-file src="src/android/HistoryDataManager.java" target-dir="src/com/fingo/fenguo/robot" />
+        <source-file src="src/android/ScanActivity.java" target-dir="src/com/fingo/fenguo/robot" />
+        <source-file src="src/android/SettingActivity.java" target-dir="src/com/fingo/fenguo/robot" /-->
+
+        <!-- begin jniLibs -->
+        <resource-file src="src/android/jniLibs/armeabi/libmp3lame.so" target="jniLibs/armeabi/libmp3lame.so" />
+        <resource-file src="src/android/jniLibs/armeabi/libpl_droidsonroids_gif.so" target="jniLibs/armeabi/libpl_droidsonroids_gif.so" />
+
+        <resource-file src="src/android/jniLibs/arm64-v8a/libmp3lame.so" target="jniLibs/arm64-v8a/libmp3lame.so" />
+        <resource-file src="src/android/jniLibs/arm64-v8a/libpl_droidsonroids_gif.so" target="jniLibs/arm64-v8a/libpl_droidsonroids_gif.so" />
+
+        <rsource-file src="src/android/jniLibs/armeabi-v7a/libmp3lame.so" target="jniLibs/armeabi-v7a/libmp3lame.so" />
+        <rsource-file src="src/android/jniLibs/armeabi-v7a/libpl_droidsonroids_gif.so" target="jniLibs/armeabi-v7a/libpl_droidsonroids_gif.so" />
+
+        <resource-file src="src/android/jniLibs/mips/libmp3lame.so" target="jniLibs/mips/libmp3lame.so" />
+        <resource-file src="src/android/jniLibs/mips/libpl_droidsonroids_gif.so" target="jniLibs/mips/libpl_droidsonroids_gif.so" />
+
+        <resource-file src="src/android/jniLibs/mips64/libmp3lame.so" target="jniLibs/mips64/libmp3lame.so" />
+        <resource-file src="src/android/jniLibs/mips64/libpl_droidsonroids_gif.so" target="jniLibs/mips64/libpl_droidsonroids_gif.so" />
+
+        <resource-file src="src/android/jniLibs/x86/libmp3lame.so" target="jniLibs/x86/libmp3lame.so" />
+        <resource-file src="src/android/jniLibs/x86/libpl_droidsonroids_gif.so" target="jniLibs/x86/libpl_droidsonroids_gif.so" />
+
+        <resource-file src="src/android/jniLibs/x86_64/libmp3lame.so" target="jniLibs/x86_64/libmp3lame.so" />
+        <resource-file src="src/android/jniLibs/x86_64/libpl_droidsonroids_gif.so" target="jniLibs/x86_64/libpl_droidsonroids_gif.so" />
+        <!-- end jniLibs -->
+
+        <!-- beigin resource -->
+        <!-- layout -->
+        <resource-file src="src/android/res/layout/activity_setting.xml" target="res/layout/activity_setting.xml" />
+        <resource-file src="src/android/res/layout/pd_activity_chat.xml" target="res/layout/pd_activity_chat.xml" />
+
+        <resource-file src="src/android/res/layout/layout_actionbar.xml" target="res/layout/layout_actionbar.xml" />
+        <resource-file src="src/android/res/layout/pd_item_message_menuhead.xml" target="res/layout/pd_item_message_menuhead.xml" />
+
+        <resource-file src="src/android/res/layout/pd_item_message_menuitem.xml" target="res/layout/pd_item_message_menuitem.xml" />
+        <resource-file src="src/android/res/layout/pd_item_message_richtext.xml" target="res/layout/pd_item_message_richtext.xml" />
+
+        <resource-file src="src/android/res/layout/pd_item_message_audio.xml" target="res/layout/pd_item_message_audio.xml" />
+        <resource-file src="src/android/res/layout/pd_item_message_unsupport.xml" target="res/layout/pd_item_message_unsupport.xml" />
+
+        <resource-file src="src/android/res/layout/pd_item_message_image.xml" target="res/layout/pd_item_message_image.xml" />
+        <resource-file src="src/android/res/layout/pd_item_suggestion.xml" target="res/layout/pd_item_suggestion.xml" />
+
+        <resource-file src="src/android/res/layout/pd_item_message_menu.xml" target="res/layout/pd_item_message_menu.xml" />
+        <resource-file src="src/android/res/layout/pd_view_plugin_item.xml" target="res/layout/pd_view_plugin_item.xml" />
+
+        <resource-file src="src/android/res/layout/pd_item_message.xml" target="res/layout/pd_item_message.xml" />
+        <resource-file src="src/android/res/layout/pd_item_message_text.xml" target="res/layout/pd_item_message_text.xml" />
+        <!-- menu -->
+        <resource-file src="src/android/res/menu/menu_chat.xml" target="res/menu/menu_chat.xml" />
+        <resource-file src="src/android/res/menu/menu_setting.xml" target="res/menu/menu_setting.xml" />
+
+        <!-- drawable -->
+        <resource-file src="src/android/res/drawable/pd_input_audio.xml" target="res/drawable/pd_input_audio.xml" />
+        <resource-file src="src/android/res/drawable/pd_input_send.xml" target="res/drawable/pd_input_send.xml" />
+        <resource-file src="src/android/res/drawable/pd_plugin_camera.xml" target="res/drawable/pd_plugin_camera.xml" />
+        <resource-file src="src/android/res/drawable/pd_input_key.xml" target="res/drawable/pd_input_key.xml" />
+        <resource-file src="src/android/res/drawable/pd_message_menuhead.xml" target="res/drawable/pd_message_menuhead.xml" />
+        <resource-file src="src/android/res/drawable/pd_plugin_photo.xml" target="res/drawable/pd_plugin_photo.xml" />
+        <resource-file src="src/android/res/drawable/pd_input_plugin.xml" target="res/drawable/pd_input_plugin.xml" />
+        <resource-file src="src/android/res/drawable/pd_message_menuitem.xml" target="res/drawable/pd_message_menuitem.xml" />
+        <resource-file src="src/android/res/drawable/pd_record_back.xml" target="res/drawable/pd_record_back.xml" />
+        <resource-file src="src/android/res/drawable/pd_input_record.xml" target="res/drawable/pd_input_record.xml" />
+        <resource-file src="src/android/res/drawable/pd_message_time.xml" target="res/drawable/pd_message_time.xml" />
+        <resource-file src="src/android/res/values/attrs.xml" target="res/values/attrs.xml"/>
+        <resource-file src="src/android/res/values/colors.xml" target="res/values/colors.xml"/>
+        <resource-file src="src/android/res/values/styles.xml" target="res/values/styles.xml"/>
+
+        <config-file parent="/*" target="res/values/colors.xml">
+            <color name="black_overlay">#66000000</color>
+            <color name="pd_panel_back">#f3f3f3</color>
+            <color name="pd_button_text_light">#ffffff</color>
+            <color name="pd_record_text">#ffffffff</color>
+            <color name="pd_record_finish">#00000000</color>
+            <color name="pd_record_cancel">#ff93302f</color>
+            <color name="pd_message_time">#ffffffff</color>
+            <color name="pd_message_text">#ff000000</color>
+            <color name="pd_message_menuhead">#ff666666</color>
+            <color name="pd_message_menuitem">#ff222222</color>
+            <color name="pd_message_title">#ff000000</color>
+            <color name="pd_message_digest">#ff808080</color>
+            <color name="pd_suggestion_text">#ff222222</color>
+            <color name="pd_suggestion_back">#fff6f6f6</color>
+
+            <color name="colorPrimary">#3F51B5</color>
+            <color name="colorPrimaryDark">#303F9F</color>
+            <color name="colorAccent">#ff000000</color>
+        </config-file>
+
+        <config-file parent="/*" target="res/values/styles.xml">
+            <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+                <item name="colorPrimary">@color/pd_button_text_light</item>
+                <item name="colorPrimaryDark">@android:color/transparent</item>
+                <item name="colorAccent">@color/colorAccent</item>
+            </style>
+            <style name="AppThemeBase" parent="Theme.AppCompat.Light" />
+            <style name="FullscreenTheme" parent="AppThemeBase">
+                <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+                <item name="android:windowActionBarOverlay">true</item>
+                <item name="android:windowBackground">@null</item>
+                <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+                <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+            </style>
+            <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+                <item name="android:background">@color/black_overlay</item>
+            </style>
+            <style name="AppTheme.NoActionBar">
+                <item name="windowActionBar">false</item>
+                <item name="windowNoTitle">true</item>
+            </style>
+            <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+            <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+        </config-file>
+
+        <config-file target="res/values/strings.xml" parent="/resources">
+            <string name="title_activity_setting">设置</string>
+            <string name="title_activity_hist">历史记录</string>
+            <string name="title_activity_scan">扫描二维码</string>
+            <string name="pd_back">返回</string>
+            <string name="pd_send">发送</string>
+            <string name="pd_more">更多</string>
+            <string name="pd_photo">照片</string>
+            <string name="pd_camera">拍摄</string>
+            <string name="pd_file">文件</string>
+
+            <string name="pd_connecting">正在连接...</string>
+            <string name="pd_connection_failed">连接失败</string>
+            <string name="pd_connection_closed">连接已断开</string>
+
+            <string name="pd_yesterday">昨天</string>
+
+            <string name="pd_hold_to_talk">按住 说话</string>
+            <string name="pd_release_to_send">松开 结束</string>
+            <string name="pd_release_to_cancel">松开 取消</string>
+            <string name="pd_slideup_and_cancel">手指上滑，取消发送</string>
+            <string name="pd_release_and_cancel">松开手指，取消发送</string>
+
+            <string name="pd_unsupported_message">当前版本不支持该消息</string>
+
+            <string name="pd_message_menu">菜单</string>
+            <string name="pd_message_recommend">您是不是想问下面的问题</string>
+        </config-file>
+        <!-- picure -->
+        <resource-file src="src/android/res/drawable-xhdpi/ic_action_next_item.png" target="res/drawable-xhdpi/ic_action_next_item.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_message_audio_right.png" target="res/drawable-xhdpi/pd_message_audio_right.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_message_bubble_left.9.png" target="res/drawable-xhdpi/pd_message_bubble_left.9.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/ic_action_remove.png" target="res/drawable-xhdpi/ic_action_remove.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_message_bubble_right.9.png" target="res/drawable-xhdpi/pd_message_bubble_right.9.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/icon_back_d.png" target="res/drawable-xhdpi/icon_back_d.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_plugin_camera_hi.png" target="res/drawable-xhdpi/pd_plugin_camera_hi.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/icon_chat_image.png" target="res/drawable-xhdpi/icon_chat_image.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_plugin_camera_no.png" target="res/drawable-xhdpi/pd_plugin_camera_no.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/icon_chat_send.png" target="res/drawable-xhdpi/icon_chat_send.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_plugin_photo_hi.png" target="res/drawable-xhdpi/pd_plugin_photo_hi.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/image_support_avatar.png" target="res/drawable-xhdpi/image_support_avatar.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_plugin_photo_no.png" target="res/drawable-xhdpi/pd_plugin_photo_no.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_input_audio_hi.png" target="res/drawable-xhdpi/pd_input_audio_hi.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_portrait_robot.png" target="res/drawable-xhdpi/pd_portrait_robot.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_input_audio_no.png" target="res/drawable-xhdpi/pd_input_audio_no.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_portrait_user.png" target="res/drawable-xhdpi/pd_portrait_user.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_input_key_hi.png" target="res/drawable-xhdpi/pd_input_key_hi.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_record_cancel.png" target="res/drawable-xhdpi/pd_record_cancel.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_input_key_no.png" target="res/drawable-xhdpi/pd_input_key_no.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_record_volume_1.png" target="res/drawable-xhdpi/pd_record_volume_1.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_record_volume_2.png" target="res/drawable-xhdpi/pd_record_volume_2.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_record_volume_3.png" target="res/drawable-xhdpi/pd_record_volume_3.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_record_volume_4.png" target="res/drawable-xhdpi/pd_record_volume_4.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_record_volume_5.png" target="res/drawable-xhdpi/pd_record_volume_5.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_record_volume_6.png" target="res/drawable-xhdpi/pd_record_volume_6.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_record_volume_7.png" target="res/drawable-xhdpi/pd_record_volume_7.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_record_volume_8.png" target="res/drawable-xhdpi/pd_record_volume_8.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_input_plugin_hi.png" target="res/drawable-xhdpi/pd_input_plugin_hi.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_input_plugin_no.png" target="res/drawable-xhdpi/pd_input_plugin_no.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_input_record_hi.9.png" target="res/drawable-xhdpi/pd_input_record_hi.9.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_input_record_no.9.png" target="res/drawable-xhdpi/pd_input_record_no.9.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_input_send_hi.9.png" target="res/drawable-xhdpi/pd_input_send_hi.9.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_input_send_no.9.png" target="res/drawable-xhdpi/pd_input_send_no.9.png" />
+        <resource-file src="src/android/res/drawable-xhdpi/pd_message_audio_left.png" target="res/drawable-xhdpi/pd_message_audio_left.png" />
+        <!-- end  picture -->
+
+        <resource-file src="src/android/BotLib/BotLib.aar" target="libs/BotLib.aar"/>
+        <hook type="after_plugin_install" src="hooks/afterPluginInstall.js" />
+        <hook type="before_plugin_rm" src="hooks/beforePluginRm.js" />
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="RobotChat">
+                <param name="ios-package" value="CDVCordovaRobotPlugin" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/CDVCordovaRobotPlugin.h" />
+        <source-file src="src/ios/CDVCordovaRobotPlugin.m" />
+        <header-file src="src/ios/PDBotChat/BotChatViewController.h" />
+        <source-file src="src/ios/PDBotChat/BotChatViewController.m" />
+        <header-file src="src/ios/PDBotChat/HistoryDataManager.h" />
+        <source-file src="src/ios/PDBotChat/HistoryDataManager.m" />
+        <header-file src="src/ios/PDBotChat/SettingViewController.h" />
+        <source-file src="src/ios/PDBotChat/SettingViewController.m" />
+        <header-file src="src/ios/PDBotChat/HistoryViewController.h" />
+        <source-file src="src/ios/PDBotChat/HistoryViewController.m" />
+        <header-file src="src/ios/PDBotChat/ScanViewController.h" />
+        <source-file src="src/ios/PDBotChat/ScanViewController.m" />
+
+        <header-file src="src/ios/BotKit/PDBotKit.h" target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIAudioTools.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIAudioTools.m" target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIChatController.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIChatController.m" target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIDateFormatter.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIDateFormatter.m" target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIImageController.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIImageController.m" target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIInitInfo.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIInitInfo.m" target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIMessageAudioCell.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIMessageAudioCell.m" target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIMessageBaseCell.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIMessageBaseCell.m" target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIMessageImageCell.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIMessageImageCell.m" target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIMessageMenuCell.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIMessageMenuCell.m" target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIMessageModel.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIMessageModel.m" target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIMessageRichTextCell.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIMessageRichTextCell.m" target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIMessageTextCell.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIMessageTextCell.m" target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIPluginPanel.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIPluginPanel.m" target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIRecordView.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIRecordView.m"  target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUISuggestionPanel.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUISuggestionPanel.m"  target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUITools.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUITools.m"  target-dir = "BotKit" />
+
+        <header-file src="src/ios/BotKit/PDUIWebController.h" target-dir = "BotKit" />
+        <source-file src="src/ios/BotKit/PDUIWebController.m"  target-dir = "BotKit" />
+
+        <header-file src="src/ios/Libs/KILabel/KILabel.h" target-dir = "Libs" />
+        <source-file src="src/ios/Libs/KILabel/KILabel.m" target-dir = "Libs" />
+
+        <header-file src="src/ios/Libs/YFGIFImageView/YFGIFImageView.h" target-dir = "Libs" />
+        <source-file src="src/ios/Libs/YFGIFImageView/YFGIFImageView.m" target-dir = "Libs" />
+
+        <header-file src="src/ios/Libs/Lame/lame.h" target-dir = "Libs" />
+        <source-file src="src/ios/Libs/Lame/libmp3lame.a" framework="true" />
+
+
+        <resource-file src="src/ios/PDBotSDK/zh-Hans.lproj" target="PDBotSDK/zh-Hans.lproj" />
+        <resource-file src="src/ios/PDBotSDK/en.lproj" target="PDBotSDK/en.lproj" />
+        <resource-file src="src/ios/PDBotSDK/PDBotKit.bundle" target="PDBotSDK/PDBotKit.bundle" />
+
+        <framework custom="true" src="src/ios/PDBotSDK/PDBotLib.framework" />
+        <framework src="libicucore.tbd" />
+        <framework src="MobileCoreServices.framework" />
+        <resource-file src="src/ios/RobotConfig.plist" />
+
+        <config-file target="*RobotConfig.plist" parent="Appkey">
+            <string>$APP_KEY</string>
+        </config-file>
+    </platform>
+</plugin>

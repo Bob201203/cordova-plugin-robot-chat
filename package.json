@@ -1,0 +1,21 @@
+{
+  "name": "cordova-plugin-robot-chat",
+  "version": "1.0.0",
+  "cordova": {
+    "id": "cordova-plugin-robot-chat",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "robot",
+    "robot-chat",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

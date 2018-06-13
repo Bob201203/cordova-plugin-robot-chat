@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black_overlay">#66000000</color>
+    <color name="pd_panel_back">#f3f3f3</color>
+    <color name="pd_button_text_light">#ffffff</color>
+    <color name="pd_record_text">#ffffffff</color>
+    <color name="pd_record_finish">#00000000</color>
+    <color name="pd_record_cancel">#ff93302f</color>
+    <color name="pd_message_time">#ffffffff</color>
+    <color name="pd_message_text">#ff000000</color>
+    <color name="pd_message_menuhead">#ff666666</color>
+    <color name="pd_message_menuitem">#ff222222</color>
+    <color name="pd_message_title">#ff000000</color>
+    <color name="pd_message_digest">#ff808080</color>
+    <color name="pd_suggestion_text">#ff222222</color>
+    <color name="pd_suggestion_back">#fff6f6f6</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#ff000000</color>
+</resources>

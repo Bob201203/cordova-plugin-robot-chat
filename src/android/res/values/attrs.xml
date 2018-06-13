@@ -1,0 +1,18 @@
+<resources>
+
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="GifTextureView">
+        <attr format="reference|string" name="gifSource"/>
+        <attr format="boolean" name="isOpaque"/>
+    </declare-styleable>
+
+    <declare-styleable name="GifView">
+        <attr format="boolean" name="freezesAnimation"/>
+        <attr format="integer" name="loopCount"/>
+    </declare-styleable>
+
+</resources>
