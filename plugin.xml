@@ -27,9 +27,6 @@
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application" mode="merge">
             <activity android:name="com.fingo.fenguo.robot.DemoChatActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:windowSoftInputMode="adjustResize" android:launchMode="singleTask" android:theme="@style/AppTheme"/>
-            <activity android:name="com.fingo.fenguo.robot.SettingActivity" android:label="@string/title_activity_setting" android:theme="@style/AppTheme" />
-            <activity android:name="com.fingo.fenguo.robot.HistoryActivity" android:label="@string/title_activity_hist" android:theme="@style/AppTheme"/>
-            <activity android:name="com.fingo.fenguo.robot.ScanActivity" android:label="@string/title_activity_scan" android:windowSoftInputMode="stateAlwaysHidden" android:theme="@style/AppTheme"/>
 
             <meta-data android:name="ROBOT_SERVICE_APPKEY" android:value="$APP_KEY" />
         </config-file>
@@ -37,12 +34,6 @@
         <source-file src="src/android/com/czt/mp3recorder" target-dir="app/src/main/java/com/czt" />
         <source-file src="src/android/com/fingo/fenguo/robot" target-dir="app/src/main/java/com/fingo/fenguo" />
         <source-file src="src/android/pl/droidsonroids/gif" target-dir="app/src/main/java/pl/droidsonroids" />
-        <!--source-file src="src/android/CordovaRobotPlugin.java" target-dir="src/com/fingo/fenguo/robot" />
-        <source-file src="src/android/DemoChatActivity.java" target-dir="src/com/fingo/fenguo/robot" />
-        <source-file src="src/android/HistoryActivity.java" target-dir="src/com/fingo/fenguo/robot" />
-        <source-file src="src/android/HistoryDataManager.java" target-dir="src/com/fingo/fenguo/robot" />
-        <source-file src="src/android/ScanActivity.java" target-dir="src/com/fingo/fenguo/robot" />
-        <source-file src="src/android/SettingActivity.java" target-dir="src/com/fingo/fenguo/robot" /-->
 
         <!-- begin jniLibs -->
         <resource-file src="src/android/jniLibs/armeabi/libmp3lame.so" target="jniLibs/armeabi/libmp3lame.so" />
@@ -233,16 +224,6 @@
         </config-file>
         <header-file src="src/ios/CDVCordovaRobotPlugin.h" />
         <source-file src="src/ios/CDVCordovaRobotPlugin.m" />
-        <header-file src="src/ios/PDBotChat/BotChatViewController.h" />
-        <source-file src="src/ios/PDBotChat/BotChatViewController.m" />
-        <header-file src="src/ios/PDBotChat/HistoryDataManager.h" />
-        <source-file src="src/ios/PDBotChat/HistoryDataManager.m" />
-        <header-file src="src/ios/PDBotChat/SettingViewController.h" />
-        <source-file src="src/ios/PDBotChat/SettingViewController.m" />
-        <header-file src="src/ios/PDBotChat/HistoryViewController.h" />
-        <source-file src="src/ios/PDBotChat/HistoryViewController.m" />
-        <header-file src="src/ios/PDBotChat/ScanViewController.h" />
-        <source-file src="src/ios/PDBotChat/ScanViewController.m" />
 
         <header-file src="src/ios/BotKit/PDBotKit.h" target-dir = "BotKit" />
 

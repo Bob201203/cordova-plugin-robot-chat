@@ -1,6 +1,7 @@
 {
   "name": "cordova-plugin-robot-chat",
   "version": "1.0.0",
+  "description": "robot chat self plugin", 
   "cordova": {
     "id": "cordova-plugin-robot-chat",
     "platforms": [
@@ -8,14 +9,22 @@
       "ios"
     ]
   },
+  "repository": {  
+    "type": "git",
+    "url": "git+https://github.com/YuchuanGu/cordova-plugin-robot-chat.git" 
+  },  
   "keywords": [
     "robot",
     "robot-chat",
+    "4paradigm",
     "ecosystem:cordova",
     "cordova-android",
     "cordova-ios"
   ],
   "author": "",
-  "license": "ISC",
-  "description": ""
+  "license": "Apache 2",
+  "bugs": {  
+    "url": ""  
+  },  
+  "homepage": ""
 }

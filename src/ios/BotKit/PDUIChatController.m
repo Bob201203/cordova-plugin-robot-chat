@@ -58,7 +58,9 @@
 @property (nonatomic, weak) PDMessageContent* audioPlayingMessage;
 @property (nonatomic, strong) UIImage *avatar;
 @property (nonatomic, strong) UIImage *abg;
+@property (nonatomic, assign) CGFloat  moveY;
 
+- (CGFloat) moveOffset;
 - (void) leftGoBack:(id)sender;
 - (void) createBackleftButton;
 - (void) setImageWithAvatarUrl :(NSString *)avatar  avatarBgUrl: (NSString *)avatarBg;
@@ -95,6 +97,11 @@
     }
 }
 
+- (CGFloat) moveOffset {
+    bool IsiPhoneX = ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO);
+    
+    return   (IsiPhoneX ? 20.f:0.f);
+}
 
 - (id)initWithInfo:(PDUIInitInfo*)initInfo  title:(NSString *) title bgUrl:(NSString *)bg avatarUrl: (NSString *)avatar
 {
@@ -117,6 +124,8 @@
 {
     [super viewDidLoad];
     
+    self.moveY = [self moveOffset];
+    
     [self createBackleftButton];
     [[PDUIDateFormatter sharedDateFormatter] refreash];
 
@@ -125,8 +134,7 @@
     
     [self createTable];
     [self createInputPanel];
-  //  [self createPluginPanel];
- //    [self createRecordViews];
+ 
     [self createRobotClient];
     [self reloadMessageList];
 }
@@ -160,7 +168,7 @@
 
 - (void)createTable
 {
-    UITableView* tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height- 61) style:UITableViewStylePlain];
+    UITableView* tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height- 61 - self.moveY) style:UITableViewStylePlain];
     
     tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     tableView.backgroundView = nil;
@@ -182,7 +190,7 @@
 
 - (void)createInputPanel
 {
-    UIView* inputView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-61, self.view.frame.size.width, 61)];
+    UIView* inputView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-61 - self.moveY, self.view.frame.size.width, 61)];
     inputView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     inputView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:inputView];
@@ -215,10 +223,12 @@
     line.backgroundColor = [UIColor lightGrayColor];
     [inputView addSubview:line];
     
-    line = [[UIView alloc] initWithFrame:CGRectMake(0, inputView.frame.size.height-0.5f, inputView.frame.size.width, 0.5f)];
-    line.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-    line.backgroundColor = [UIColor lightGrayColor];
-    [inputView addSubview:line];
+    if (self.moveY <=1.f) {
+        line = [[UIView alloc] initWithFrame:CGRectMake(0, inputView.frame.size.height-0.5f, inputView.frame.size.width, 0.5f)];
+        line.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        line.backgroundColor = [UIColor lightGrayColor];
+        [inputView addSubview:line];
+    }
     
 //    self.inputButVoice = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 48, 48)];
 //    self.inputButVoice.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
@@ -852,9 +862,10 @@
             [self.botClient askQuestion:text];
             self.inputTextView.text = nil;
         }
-        
     }
-    
 }
+
+
+
 
 @end
