@@ -32,3 +32,23 @@
   iOS
     - ios 下的 源码、资源
 
+6. 调用Sample
+  ```
+  let title = "芬果客服";
+  let portraitBg = domain + 'portrait_bg.png';
+  let portrait = domain + 'portrait_head.png';
+  let sendData = {
+      title: title,
+      bg: portraitBg,
+      avatar: portrait
+    };
+
+  let cordova: any = window['cordova'];
+  cordova.plugins.RobotChat.coolMethod(sendData,
+    function (res) {
+      console.log('success');
+    },
+    function (msg) {
+      console.log('fail msg');
+    });
+  ```
